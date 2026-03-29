@@ -3,9 +3,9 @@
     public class Asset
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty; // npr. "Senzor Tlaka 01"
-        public string Type { get; set; } = string.Empty; // npr. "Senzor", "Pumpa", "Motor"
-        public string Location { get; set; } = string.Empty; // npr. "Pogon A"
-        public bool IsActive { get; set; } = true; // Je li stroj u radu?
+        public string Name { get; set; } = string.Empty;
+        public string Type { get; set; } = string.Empty;
+        public string Location { get; set; } = string.Empty; 
+        public bool IsActive { get; set; } = true; 
     }
 }

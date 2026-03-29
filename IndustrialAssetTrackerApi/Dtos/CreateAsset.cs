@@ -1,11 +1,11 @@
 ﻿namespace IndustrialAssetTrackerApi.Dtos
 {
-    public class GetAssetDto
+    public class CreateAsset
     {
-        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
         public string Location { get; set; } = string.Empty;
-        public bool IsActive { get; set; } = true; 
+        public string IsActive { get; set; } = string.Empty;
+
     }
 }

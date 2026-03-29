@@ -7,21 +7,46 @@ namespace IndustrialAssetTrackerApi.Services
 {
     public class AssetService(AppDbContext context) : IAssetService
     {
-        // POPRAVLJENO: Dodan async i promijenjen povratni tip u List da prati interface
-        public async Task<List<GetAssetDto>> AddAsset(Asset asset)
+        public async Task<GetAssetDto> AddAsset(CreateAsset asset)
         {
-            throw new NotImplementedException();
+            var getAsset = new Asset
+            {
+                Name = asset.Name,
+                Type = asset.Type,
+                Location = asset.Location,
+                IsActive = bool.Parse(asset.IsActive)
+            };
+
+            context.Assets.Add(getAsset);
+            await context.SaveChangesAsync();
+
+            return new GetAssetDto
+            {
+                Id = getAsset.Id,
+                Name = getAsset.Name,
+                Type = getAsset.Type,
+                Location = getAsset.Location,
+                IsActive = getAsset.IsActive
+            };
         }
 
-        // POPRAVLJENO: Dodan async
-        public async Task<List<GetAssetDto>?> DeleteAsset(int id)
+        public async Task<bool> DeleteAsset(int id)
         {
-            throw new NotImplementedException();
+            var assetToDelete = await context.Assets.FindAsync(id);
+
+            if (assetToDelete is null)
+                return false;
+
+            context.Assets.Remove(assetToDelete);
+            await context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<List<GetAssetDto>> GetAllAssets()
             => await context.Assets.Select(a => new GetAssetDto
             {
+                Id = a.Id,
                 Name = a.Name,
                 Type = a.Type,
                 Location = a.Location,
@@ -34,6 +59,7 @@ namespace IndustrialAssetTrackerApi.Services
                 .Where(a => a.Id == id)
                 .Select(a => new GetAssetDto
                 {
+                    Id = a.Id,
                     Name = a.Name,
                     Type = a.Type,
                     Location = a.Location,
@@ -43,10 +69,21 @@ namespace IndustrialAssetTrackerApi.Services
             return result;
         }
 
-        // POPRAVLJENO: Dodan async
-        public async Task<List<GetAssetDto>?> UpdateAsset(int id, Asset request)
+        public async Task<bool> UpdateAsset(int id, UpdateAsset asset)
         {
-            throw new NotImplementedException();
+            var existingAsset = await context.Assets.FindAsync(id);
+
+            if (existingAsset is null)
+                return false;
+
+            existingAsset.Name = asset.Name;
+            existingAsset.Type = asset.Type;
+            existingAsset.Location = asset.Location;
+            existingAsset.IsActive = asset.IsActive;
+
+            await context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

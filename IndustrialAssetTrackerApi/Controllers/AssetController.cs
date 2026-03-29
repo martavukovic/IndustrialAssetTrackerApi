@@ -10,8 +10,6 @@ namespace IndustrialAssetTrackerApi.Controllers
     [ApiController]
     public class AssetController(IAssetService service) : ControllerBase
     {
-
-        // 1. DOHVATI SVE STROJEVE
         [HttpGet]
         public async Task<ActionResult<List<GetAssetDto>>> GetAllAssets()
                  => Ok(await service.GetAllAssets());
@@ -20,7 +18,28 @@ namespace IndustrialAssetTrackerApi.Controllers
         public async Task<ActionResult<GetAssetDto>> GetSingleAsset(int id)
         {
             var asset = await service.GetSingleAsset(id);
-            return asset is null ? NotFound("Asset with given ID not fount!") : Ok(asset);
+            return asset is null ? NotFound("Asset with given ID not found!") : Ok(asset);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<GetAssetDto>> AddAsset(CreateAsset asset)
+        {
+            var assets = await service.AddAsset(asset);
+            return CreatedAtAction (nameof(GetSingleAsset), new { id = assets.Id }, assets);    
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<GetAssetDto>> UpdateAsset(int id, UpdateAsset asset)
+        {
+            var assets = await service.UpdateAsset(id, asset);
+            return assets is false ? NotFound("Asset with given ID not found!") : Ok(assets);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<GetAssetDto>> DeleteAsset(int id)
+        {
+            var assets = await service.DeleteAsset(id);
+            return assets is false ? NotFound("Asset with given ID not found!") : Ok(assets);
         }
     }
 }
