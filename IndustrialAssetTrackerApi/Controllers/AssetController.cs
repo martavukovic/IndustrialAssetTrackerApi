@@ -22,7 +22,7 @@ namespace IndustrialAssetTrackerApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<GetAssetDto>> AddAsset(CreateAsset asset)
+        public async Task<ActionResult<GetAssetDto>> AddAsset([FromBody]CreateAsset asset)
         {
             var assets = await service.AddAsset(asset);
             return CreatedAtAction (nameof(GetSingleAsset), new { id = assets.Id }, assets);    

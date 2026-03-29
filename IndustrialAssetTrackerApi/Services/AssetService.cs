@@ -9,12 +9,17 @@ namespace IndustrialAssetTrackerApi.Services
     {
         public async Task<GetAssetDto> AddAsset(CreateAsset asset)
         {
+            if (!bool.TryParse(asset.IsActive, out var isActive))
+            {
+                isActive = true; // Default value
+            }
+
             var getAsset = new Asset
             {
                 Name = asset.Name,
                 Type = asset.Type,
                 Location = asset.Location,
-                IsActive = bool.Parse(asset.IsActive)
+                IsActive = isActive
             };
 
             context.Assets.Add(getAsset);
