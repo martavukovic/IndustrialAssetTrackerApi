@@ -24,7 +24,3 @@ The repository is organized into two main modules:
 
 - **`IndustrialAssetTrackerApi/`** - Contains the C# backend logic, database models, and API endpoints.
 - **`IndustrialAssetTrackerFrontend/`** - Contains the React application, UI components, and state management.
-
----
-
-**Developed by Marta Vukovic** 🚀
