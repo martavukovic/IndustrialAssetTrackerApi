@@ -10,19 +10,15 @@ namespace IndustrialAssetTrackerApi.Core.Entities.Assets
             builder.HasKey(it => it.Id);
 
             builder.Property(it => it.Name)
-                .HasMaxLength(255) 
-                .IsRequired();     
+                .HasMaxLength(AssetConsts.NameMaxLength) 
+                .IsRequired();
 
             builder.Property(it => it.Type)
-                .HasMaxLength(100)
+                .HasMaxLength(AssetConsts.TypeMaxLength) 
                 .IsRequired();
 
             builder.Property(it => it.Location)
-                .HasMaxLength(500)
-                .IsRequired();
-
-            builder.Property(it => it.IsActive)
-                .HasDefaultValue(true)
+                .HasMaxLength(AssetConsts.LocationMaxLength) 
                 .IsRequired();
         }
 
