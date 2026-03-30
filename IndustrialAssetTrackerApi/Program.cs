@@ -1,5 +1,6 @@
-using IndustrialAssetTrackerApi.Data;
-using IndustrialAssetTrackerApi.Services;
+using IndustrialAssetTrackerApi.Application.Services;
+using IndustrialAssetTrackerApi.Application.Services.Assets;
+using IndustrialAssetTrackerApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 

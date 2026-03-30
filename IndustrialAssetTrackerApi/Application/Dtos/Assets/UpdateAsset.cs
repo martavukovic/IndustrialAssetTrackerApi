@@ -1,4 +1,4 @@
-﻿namespace IndustrialAssetTrackerApi.Dtos
+﻿namespace IndustrialAssetTrackerApi.Application.Dtos.Assets
 {
     public class UpdateAsset
     {

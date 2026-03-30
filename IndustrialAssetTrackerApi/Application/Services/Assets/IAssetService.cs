@@ -1,7 +1,7 @@
-﻿using IndustrialAssetTrackerApi.Dtos;
-using IndustrialAssetTrackerApi.Models;
+﻿using IndustrialAssetTrackerApi.Application.Dtos.Assets;
+using IndustrialAssetTrackerApi.Core.Entities;
 
-namespace IndustrialAssetTrackerApi.Services
+namespace IndustrialAssetTrackerApi.Application.Services.Assets
 {
     public interface IAssetService
     {

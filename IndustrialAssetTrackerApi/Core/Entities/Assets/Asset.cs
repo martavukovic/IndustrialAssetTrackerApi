@@ -1,4 +1,4 @@
-﻿namespace IndustrialAssetTrackerApi.Models
+﻿namespace IndustrialAssetTrackerApi.Core.Entities.Assets
 {
     public class Asset
     {

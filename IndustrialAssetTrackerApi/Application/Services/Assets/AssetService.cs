@@ -1,9 +1,9 @@
-﻿using IndustrialAssetTrackerApi.Data;
-using IndustrialAssetTrackerApi.Dtos;
-using IndustrialAssetTrackerApi.Models;
+﻿using IndustrialAssetTrackerApi.Application.Dtos.Assets;
+using IndustrialAssetTrackerApi.Infrastructure.Data;
+using IndustrialAssetTrackerApi.Core.Entities.Assets;
 using Microsoft.EntityFrameworkCore;
 
-namespace IndustrialAssetTrackerApi.Services
+namespace IndustrialAssetTrackerApi.Application.Services.Assets
 {
     public class AssetService(AppDbContext context) : IAssetService
     {

@@ -1,6 +1,6 @@
-﻿using IndustrialAssetTrackerApi.Dtos;
-using IndustrialAssetTrackerApi.Models;
-using IndustrialAssetTrackerApi.Services;
+﻿using IndustrialAssetTrackerApi.Application.Dtos.Assets;
+using IndustrialAssetTrackerApi.Application.Services.Assets;
+using IndustrialAssetTrackerApi.Core.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
